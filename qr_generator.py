@@ -24,9 +24,10 @@ def generar_qr(restaurant_id: str, base_url: str = None, usar_html_estatico: boo
     
     if usar_html_estatico:
         if base_url:
-            url = f"{base_url}/descuento.html" if base_url.endswith('/') else f"{base_url}/descuento.html"
+            # En Vercel, el index.html está en la raíz, así que solo usamos la URL base
+            url = base_url.rstrip('/')  # Quitar barra final si existe
         else:
-            url = "./descuento.html"
+            url = "./index.html"
     else:
         if base_url is None:
             base_url = "http://localhost:8000"
