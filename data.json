@@ -1,0 +1,29 @@
+{
+  "restaurantes": {
+    "rest_001": {
+      "visitas": 0
+    },
+    "rest_002": {
+      "visitas": 0
+    },
+    "rest_003": {
+      "visitas": 0
+    },
+    "rest_004": {
+      "visitas": 0
+    },
+    "rest_005": {
+      "visitas": 0
+    },
+    "com_001": {
+      "visitas": 0
+    },
+    "com_002": {
+      "visitas": 0
+    },
+    "com_003": {
+      "visitas": 0
+    }
+  }
+}
+
