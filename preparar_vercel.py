@@ -10,6 +10,7 @@ import shutil
 ORIGEN = "static/descuento.html"
 DESTINO_DIR = "vercel-deploy"
 DESTINO_HTML = os.path.join(DESTINO_DIR, "index.html")
+DESTINO_VERCEL_JSON = os.path.join(DESTINO_DIR, "vercel.json")
 
 # Crear carpeta de destino
 if not os.path.exists(DESTINO_DIR):
@@ -20,8 +21,22 @@ if not os.path.exists(DESTINO_DIR):
 if os.path.exists(ORIGEN):
     shutil.copy2(ORIGEN, DESTINO_HTML)
     print(f"[OK] HTML copiado a '{DESTINO_HTML}'")
+    
+    # Crear vercel.json
+    vercel_config = """{
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}"""
+    with open(DESTINO_VERCEL_JSON, 'w', encoding='utf-8') as f:
+        f.write(vercel_config)
+    print(f"[OK] vercel.json creado")
+    
     print(f"\nCarpeta lista para Vercel: {os.path.abspath(DESTINO_DIR)}")
-    print(f"   Contiene: index.html")
+    print(f"   Contiene: index.html, vercel.json")
     print(f"\nSiguiente paso:")
     print(f"   1. Sube la carpeta '{DESTINO_DIR}' a un repo de GitHub")
     print(f"   2. O arrastrala directamente a Vercel")
